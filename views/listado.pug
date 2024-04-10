@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= titulo
+
+  .row
+    .col-12.col-md-3
+      ul
+        each personaje in listado 
+          li 
+            a(href=personaje.id) #{personaje.name}
+        else 
+          li No hay resultados

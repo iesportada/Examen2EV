@@ -1,0 +1,47 @@
+extends layout
+   
+block content
+    //-
+    h1
+        strong Fichas guardadas en local
+    .row
+        p 
+        //- form(action="/grabar", method="post")
+        //-    div.form-group
+        //-        label(for="id") Buscar por ID:
+        //-        input#id.form-control(type="text", name="id", placeholder="ID del personaje")
+        //-        br
+        //-    button.btn.btn-primary(type="submit") Buscar por ID
+    .row
+        p
+        //- a.btn.btn-warning(href="/guardar") Leer todos
+        #container
+            each personaje in listado
+                .card(style='width: 13rem')
+                    img.card-img-top(src=personaje.image alt='...')
+                    .card-body
+                        p 
+                            string #
+                            =   personaje.id
+                        p
+                            strong Name: 
+                            =   personaje.name
+                        p
+                            strong Genero: 
+                            case personaje.gender
+                                when 'Male'
+                                    string Hombre
+                                when 'Female'
+                                    string Mujer
+                                default 
+                                    string Bicho Raro
+                        p
+                            - fecha = new Date(personaje.created).toLocaleDateString('ES-es');
+                            strong Fecha: 
+                                =    fecha 
+                        p
+                            form(action='/personaje/borrar' method='post')
+                                input(type='hidden' name='id' value=personaje.id)
+                                div
+                                button.btn.btn-primary(type='submit') Eliminar
+                    
