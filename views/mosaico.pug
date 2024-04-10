@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  h1
-    strong Mosaico
+  h1= titulo
   #container 
     each personaje in listado 
       .card(style='width: 13rem')
