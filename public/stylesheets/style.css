@@ -6,3 +6,15 @@ body {
 a {
   color: #00B7FF;
 }
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: 1px solid red;
+  width: 80vw;
+  margin: auto;
+}
+
+.card{
+  margin: 1%;
+}

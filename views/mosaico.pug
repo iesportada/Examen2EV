@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1
+    strong Mosaico
+  #container 
+    each personaje in listado 
+      .card(style='width: 13rem')
+        img.card-img-top(src=personaje.image)
+        .card-body
+          h5.card-title ##{personaje.id}  #{personaje.name}
+
+          case personaje.gender   
+            when 'Male'
+              h6.card-subtitle-mb-2.text-body-secondary Hombre 
+            when 'Female'
+              h6.card-subtitle-mb-2.text-body-secondary Mujer
+            default
+              h6.card-subtitle-mb-2.text-body-secondary Bicho Raro 
+
+          p.card-text #{new Date(personaje.created.toISOString().split('T')[0]).toLocaleDateString('ES-es')}
+          form(action='/personaje/guardar' method='post')
+            input(type='hidden' name='id' value=personaje.id)
+            div
+            button.btn.btn-warning(type='submit') Guardar en BD
+          p
+
+
+  

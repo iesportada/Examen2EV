@@ -1,0 +1,10 @@
+GET http://localhost:5555/
+###
+GET http://localhost:5555/personaje/mosaico
+###
+POST http://localhost:5555/personaje/guardar
+Content-Type: application/x-www-form-urlencoded
+
+id=2
+&name=rick
+###
